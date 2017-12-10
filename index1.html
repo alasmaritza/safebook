@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h3></h3>
+    <p class="capacity">Capacity: </p>
+    <p class="address">Address: </p>
+    <p class="phone">Phone: </p>
+    <button>Book</button>
+    <p class="message" style="display:none">Your booking has been confirmed please be sure to arrive within 30 minutes or your booking will be lost.</p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="shelterCalls.js"></script>
+    <script type="text/javascript">
+        function startUp() {
+            shelters();
+            console.log("work");
+            $("button").on("click", book);
+        }
+
+        var shelters = function () {
+            shelterGet(onSuccess, onError);
+        }
+
+        var onSuccess = function (data) {
+            $("h3").append(data.name);
+            $(".capacity").append(data.capacity);
+            $(".address").append(data.address);
+            $(".phone").append(data.phone);
+            //document.write(data.address);
+            console.log(data);
+        }
+
+        var onError = function (data) {
+            console.log(data);
+        }
+
+        var book = function () {
+            $("button").html("Confirming...");
+            setTimeout(function () {
+                $("button").html("Booked!");
+                $(".message").css("display", "block");
+                $(".capacity").html("Capacity: 2");
+            }, 2000);
+        }
+
+        $(document).ready(startUp);
+    </script>
+</body>
+
+</html>

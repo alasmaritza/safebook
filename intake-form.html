@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Intake</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <header class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills float-right">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Intake
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Analytics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <h3 class="text-muted">Safe Book</h3>
+    </header>
+
+    <main role="main">
+      <div class="jumbotron">
+        <h1 class="display-3">Safe Book - Universal Intake Form</h1>
+        <p class="lead">Providing safe housing immediately one child, one parent at a time.</p>
+      </div>
+      <div>
+        <form class="col-md-6 offset-3">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">Veteran
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">Medical Needs
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Adult:</label>
+            <div class="input-group newPerson added">
+              <input class="form-control" type="text" placeholder="Last Name, First Name">
+              <div class="input-group-addon btn-primary btn addAdult">+</div>
+            </div>
+            <br>
+            <div class="new"></div>
+            <!-- <button class="btn btn-primary">+</button><br> -->
+            <label>Children:</label>
+            <select class="form-control">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4+</option>
+            </select>
+            <br>
+            <label>Beds Needed:</label>
+            <select class="form-control">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4+</option>
+            </select>
+            <br>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" disabled>Pets
+              </label>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </main>
+    <br>
+    <footer class="footer">
+      <p class="text-center">&copy; Safe Book 2018</p>
+    </footer>
+  </div>
+  <!-- /container -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    function startUp() {
+      // shelters();
+      //console.log("work");
+      // $("button").on("click", book);
+      $(".addAdult").on("click", addAdult);
+    }
+
+    var shelters = function () {
+      shelterGet(onSuccess, onError);
+    }
+
+    var addAdult = function (event) {
+      event.preventDefault();
+      $(".newPerson").clone().appendTo(".new");
+    }
+
+    var onSuccess = function (data) {
+      $("h3").append(data.name);
+      $(".capacity").append(data.capacity);
+      $(".address").append(data.address);
+      $(".phone").append(data.phone);
+    }
+
+    var onError = function (data) {
+      console.log(data);
+    }
+
+    var book = function () {
+      setTimeout(function () {
+        $("button").html("Booked!");
+        $(".message").css("display", "block");
+        $(".capacity").html("Capacity: 2");
+      }, 2000);
+    }
+
+    $(document).ready(startUp);
+  </script>
+</body>
+
+</html>
