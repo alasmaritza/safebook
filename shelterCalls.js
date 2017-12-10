@@ -1,5 +1,5 @@
 var shelterGet = function (onSuccess, onError) {
-    var url = "http://5a2c8607d38d3c0012a094c9.mockapi.io/shelter/1";
+    var url = "https://5a2c8607d38d3c0012a094c9.mockapi.io/shelter/1";
     var settings = {
         cache: false,
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
